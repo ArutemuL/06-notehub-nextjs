@@ -82,7 +82,7 @@ export default function NotesClient() {
 
       {isLoading && <Loader />}
 
-      {isError && <ErrorMessage error={error instanceof Error ? error : null} />}
+      {isError && error && <ErrorMessage error={error} />}
 
       {isSuccess && notes.length > 0 && <NoteList notes={notes} />}
     </section>
