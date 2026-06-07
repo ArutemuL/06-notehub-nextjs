@@ -25,7 +25,7 @@ export default function NotesClient() {
     setPage(1);
   });
 
-  const { data, isLoading, isError, isSuccess } = useQuery({
+  const { data, isLoading, isError, isSuccess, error } = useQuery({
     queryKey: ["noteHubKey", debouncedSearch, page],
     queryFn: () => noteFetch(debouncedSearch, page),
     placeholderData: keepPreviousData,
@@ -82,7 +82,7 @@ export default function NotesClient() {
 
       {isLoading && <Loader />}
 
-      {isError && <ErrorMessage />}
+      {isError && <ErrorMessage error={error instanceof Error ? error : null} />}
 
       {isSuccess && notes.length > 0 && <NoteList notes={notes} />}
     </section>
