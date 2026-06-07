@@ -26,7 +26,7 @@ export default function NoteDetailsClient() {
     <>
       {isLoading && <Loader />}
 
-      {isError && <ErrorMessage error={error instanceof Error ? error : null} />}
+      {isError && error && <ErrorMessage error={error} />}
 
       {isSuccess && note?.id && (
         <div className={css.container}>
