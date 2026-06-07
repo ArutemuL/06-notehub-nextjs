@@ -15,6 +15,7 @@ export default function NoteDetailsClient() {
     isLoading,
     isError,
     isSuccess,
+    error,
   } = useQuery({
     queryKey: ["note", id],
     queryFn: () => noteFetchID(id),
@@ -25,7 +26,7 @@ export default function NoteDetailsClient() {
     <>
       {isLoading && <Loader />}
 
-      {isError && <ErrorMessage />}
+      {isError && <ErrorMessage error={error instanceof Error ? error : null} />}
 
       {isSuccess && note?.id && (
         <div className={css.container}>
