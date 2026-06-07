@@ -3,15 +3,13 @@
 import css from "./error.module.css";
 
 interface ErrorMessageProps {
-  error?: Error | null;
+  error: Error;
 }
 
 export default function ErrorMessage({ error }: ErrorMessageProps) {
   return (
     <div className={css.wrapperError}>
-      <p className={css.errorMessage}>
-        {error?.message ?? "Oops! Something went wrong. Try again."}
-      </p>
+      <p className={css.errorMessage}>{error.message}</p>
     </div>
   );
 }
